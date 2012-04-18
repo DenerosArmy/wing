@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Project Wing</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Sumukh Sridhara">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le styles -->
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="assets/css/jigowatt.min.css" rel="stylesheet">
+		<link href="assets/css/goalhawkcustom.css" rel="stylesheet">
+
+<style>
+.jumbotron .btn-large {
+  font-size: 20px;
+  font-weight: normal;
+  margin-right: 10px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.center {
+align:center;
+}
+.navbar-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #2c2c2c;
+  background-image: -moz-linear-gradient(top, #980000, #840000);
+  background-image: -ms-linear-gradient(top,  #980000, #840000));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#980000), to(#840000));
+  background-image: -webkit-linear-gradient(top, #980000, #840000);
+  background-image: -o-linear-gradient(top, #980000, #840000);
+  background-image: linear-gradient(top, #980000, #840000);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'58bddb, endColorstr='#'379fbd, GradientType=0);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+</style>
+
+				<!--  <link rel="shortcut icon" href="favicon.ico">  -->
+	</head>
+
+	<body>
+
+<!-- Navigation
+================================================== -->
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+
+				<a class="brand" href="home.php">
+			<logo >Project Wing</logo>	<!-- <img src="assets/i/ghlogo.png" width="90"> --> 				
+				</a>
+				
+						<div class="nav-collapse">
+					<ul class="nav" id="findme">
+						<li><a href="home.php">Home</a></li>
+						<li><a href="#">Classes</a></li>
+						<li><a href="#">About</a></li>
+
+						<li><a href="#">Blog</a></li>
+					</ul>
+
+		<ul class="nav  pull-right">
+			<li><a href="#" class="signup-link"><strong>Start studying </strong> &raquo; </a></li> <li><a href="#.php" class="signup-link"><strong> Invite</strong> your friends</a></li>
+
+		</ul>
+				</div>
+				</div>
+			</div><!-- /navbar-inner -->
+		</div><!-- /navbar -->
+	</div><!-- /navbar-wrapper -->
+
+<!-- Main content
+================================================== -->
+    <div class="container">
+
+<div id="sub-form" class="modal hide fade">
+	<div class="modal-header">
+		<a href="home.php" class="close">&times;</a>
+		<h3>Subscribe to updates</h3>
+	</div>
+	<div class="modal-body">
+		<div id="sub-message"></div>
+		<p>Want to be kept notified of <strong>updates</strong> for GoalHawk?</p>
+		<form target="sub-message" method="post" action="https://spreadsheets.google.com/spreadsheet/formResponse?formkey=dEtyTEtaOHlrMnZrYk1RN2VITERoaWc6MQ" class="form-horizontal subscribe">
+			<fieldset>
+				<div class="control-group">
+				<label for="sub-email">Email</label>
+					<div class="controls">
+						<input class="xlarge" id="sub-email" name="entry.1.single" size="30" type="text"/>
+					</div>
+				</div>
+			</fieldset>
+			<button type="submit" data-loading-text="loading..." data-complete-text="Subscribed" name="submit" class="btn btn-primary modal-btn" id="sub-submit">Submit</button>
+		</form>
+	</div>
+	<div class="modal-footer"><p>Spam is for jerks. Jerks we are not.</p></div>
+</div>
+<div class="alert alert-error">
+  <a class="close" data-dismiss="alert">×</a>
+  <strong>We're still developing Project Wing!</strong> It's not quite ready for primetime, but feel free to poke around.
+</div>
+
+	<div class="hero-unit">
+		<h1>Welcome to <logo>Project Wing</logo>  <small> alpha </small></h1><br>
+        <p>Project Wing is ... </p>
+		<p>
+						<a data-toggle="modal" href="#sub-form" class="btn  btn-large">Get updates by email.</a>
+		<a href="sign_up.php"  class="btn  btn-large">Find your class and get started &raquo;</a>
+		</p>
+
+	</div>
+<hr class="soften">
+
+  <div class="row-fluid jumbotron center">
+<p align="center">Search for your class: <input type="text"  class="span9 search-query" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["CS 61A","CS 61B","CS 61C","MATH 54","EE 40"]'></p>
+  <p align="center"> 
+      <a href="#" class="btn  btn-large">CS 61A</a>
+      <a href="#" class="btn  btn-large">EE 40</a>
+    </p>
+
+    </div>
+    <hr class="soften">
+
+      <div class="row-fluid">
+
+
+</div>
+
+<div class="marketing">
+  <h1>Take control of your studying. Online Study-groups done right.</h1>
+  <p class="marketing-byline">Take the first step now by finding your class. It's free and takes only 15 seconds!</p>
+  <div class="row">
+    <div class="span4">
+      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
+      <h2>Study with your peers.</h2>
+      <p>Anyone can be in a study group.</p>
+    </div>
+    <div class="span4">
+      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
+      <h2>Succeed in class</h2>
+      <p>Project Wing is designed to help <strong>anyone</strong> form study groups</p>
+    </div>
+    <div class="span4">
+      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_163_iphone.png">
+      <h2>Works everywhere</h2>
+      <p>Thanks to dropbox, we have all the files you'll need!	 </p>
+    </div>
+  </div><!--/row-->
+  <div class="row">
+    <div class="span4">
+          <img class="bs-icon" src="assets/img/glyphicons/glyphicons_009_magic.png">
+
+      <h2>Get tons of feedback</h2>
+      <p>Video Chat and realtime interaction will help you learn      </p>
+    </div>
+    <div class="span4">
+      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_082_roundabout.png">
+      <h2>It all syncs!</h2>
+      <p>Store all your files that you work on through dropbox</p>
+    </div>
+    <div class="span4">
+      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_266_book_open.png">
+      <h2>Collaborate on files</h2>
+      <p>Use Project Wing to collaborate on projects and essays</p>
+    </div>
+  </div><!--/row-->
+  	<div class="row-fluid">
+
+		<div class="span6">
+				      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_214_resize_small.png">
+
+
+			<h2>Today can be the day</h2>
+			<p>The day you take control of your studying..</p>
+		</div>
+
+		<div class="span6">
+		      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
+
+			<h2>Security/Privacy</h2>
+			<p>Erm. Working on it! </p>
+					</div>
+
+	</div><!--/row-->
+								<br><p align="center"> <a  href="#" class="btn btn-success btn-large">What are you waiting for? Get Started Now   &raquo;</a></p>
+
+<br>
+  		  <p class="marketing-byline">Free? ✔ - Safe? ✔ - Quick? ✔ - Awesome ✔</p>
+<!-- Footer
+================================================== -->
+
+	</div> <!-- /.span9 -->
+	</div> <!-- /.row-fluid -->
+
+	<footer>
+	<div class="footer">
+			<hr class="soften">
+
+			<div id="logo"> 
+		<a href="#">&copy; <logo>Project Wing</logo> - The Big Hack - Cal</a>  
+		</div> 
+				<div id="Group2"><br> <a href="#privacy">Privacy </a>  |  <a href="#">Blog</a> 	</div>
+</div>
+	</footer>
+
+</div> <!-- /.container-fluid -->
+
+</div> <!-- the wrapper layer -->
+	<!-- The javascript -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.collapse.js"></script>
+	<script src="assets/js/bootstrap-modal.js"></script>
+	<script src="assets/js/bootstrap-dropdown.js"></script>
+	<script src="assets/js/bootstrap-button.js"></script>
+	<script src="assets/js/bootstrap-tab.js"></script>
+	<script src="assets/js/bootstrap-alert.js"></script>
+	<script src="assets/js/bootstrap-scrollspy.js"></script>
+	<script src="assets/js/bootstrap-popover.js"></script>
+	<script src="assets/js/bootstrap-typeahead.js"></script>
+
+	<script src="assets/js/jquery.jigowatt.js"></script>
+
+  </body>
+</html>

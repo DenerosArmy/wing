@@ -1,4 +1,7 @@
 *.pyc
 *.swp
+<<<<<<< HEAD
 venv
 main/.DS_Store
+=======
+>>>>>>> first commit. added gitignore

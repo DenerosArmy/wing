@@ -13,10 +13,10 @@
 		<![endif]-->
 
 		<!-- Le styles -->
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-		<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="assets/css/jigowatt.min.css" rel="stylesheet">
-		<link href="assets/css/goalhawkcustom.css" rel="stylesheet">
+		<link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/static/assets/css/jigowatt.min.css" rel="stylesheet">
+		<link href="/static/assets/css/goalhawkcustom.css" rel="stylesheet">
 		  <script src="http://code.jquery.com/jquery-latest.js"></script>
 
   <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
@@ -24,7 +24,7 @@
   <script type="text/javascript">
 
     var apiKey = '14255491';
-    var sessionId = '2_MX4xMjMyMDgxfjcyLjUuMTY3LjE0OH4yMDEyLTA0LTE1IDAwOjM1OjA1LjU0NTUwNyswMDowMH4wLjMxNjA0NjQ5NjQzNX4';
+    var sessionId = '{{sessionId}}' 
     var token = 'devtoken';           
      
     TB.setLogLevel(TB.DEBUG);     
@@ -124,7 +124,7 @@ function changeText(txt){
 				</a>
 
 				<a class="brand" href="home.php">
-			<logo >Project Wing</logo>	<!-- <img src="assets/i/ghlogo.png" width="90"> --> 				
+			<logo >Project Wing</logo>	<!-- <img src="/static/assets/i/ghlogo.png" width="90"> --> 				
 				</a>
 				
 						<div class="nav-collapse">
@@ -173,7 +173,7 @@ function changeText(txt){
 
             <ul class="nav nav-list">
               <li class="nav-header">People here</li>
-              <li class="active"><a target="freeform" onclick='changeText("Your Space")' href="http://willyou.typewith.me/p/lusdalasda">Class Name</a></li>
+              <li class="active"><a target="freeform" onclick='changeText("Your Space")' href="http://willyou.typewith.me/p/{{mytext}}">Class Name</a></li>
               <li><a target="freeform" onclick='changeText("Richie")' href="http://willyou.typewith.me/p/richielusdalasda">Richie</a></li>
               <li><a target="freeform" onclick='changeText("Sumukh")' href="http://willyou.typewith.me/p/sumukhlusdalasda">Sumukh</a></li>
               <li><a target="freeform" onclick='changeText("Whiteboard")' href="http://api.dabbleboard.com/api/iframe?dev_id=sumukh1&user_id=cs61&user_key=cs61&drawing_user_id=cs61&drawing_id=0&drawing_key=cs61&width=640&height=480
@@ -200,11 +200,11 @@ function changeText(txt){
             <div class="span6">
 
               <h2><div id="freetitle">Your Space</div></h2>
-              <iframe name="freeform" src="http://willyou.typewith.me/p/lusdalasda"  width="100%" height="600px" frameborder="0"></iframe>
+              <iframe name="freeform" src="http://willyou.typewith.me/p/{{mytext}}"  width="100%" height="600px" frameborder="0"></iframe>
             </div><!--/span-->
                         <div class="span6">
               <h2>The Classes Space</h2>
-              <iframe src="http://willyou.typewith.me/p/lusdalasda2"  width="100%" height="600px" frameborder="0"></iframe>
+              <iframe src="http://willyou.typewith.me/p/{{grouptext}}"  width="100%" height="600px" frameborder="0"></iframe>
             </div><!--/span-->
 
             </div><!--/span-->
@@ -238,15 +238,15 @@ function changeText(txt){
 </div> <!-- the wrapper layer -->
 	<!-- The javascript -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.collapse.js"></script>
-	<script src="assets/js/bootstrap-modal.js"></script>
-	<script src="assets/js/bootstrap-dropdown.js"></script>
-	<script src="assets/js/bootstrap-button.js"></script>
-	<script src="assets/js/bootstrap-tab.js"></script>
-	<script src="assets/js/bootstrap-alert.js"></script>
-	<script src="assets/js/bootstrap-scrollspy.js"></script>
-	<script src="assets/js/bootstrap-popover.js"></script>
-	<script src="assets/js/jquery.jigowatt.js"></script>
+	<script src="/static/assets/js/bootstrap.collapse.js"></script>
+	<script src="/static/assets/js/bootstrap-modal.js"></script>
+	<script src="/static/assets/js/bootstrap-dropdown.js"></script>
+	<script src="/static/assets/js/bootstrap-button.js"></script>
+	<script src="/static/assets/js/bootstrap-tab.js"></script>
+	<script src="/static/assets/js/bootstrap-alert.js"></script>
+	<script src="/static/assets/js/bootstrap-scrollspy.js"></script>
+	<script src="/static/assets/js/bootstrap-popover.js"></script>
+	<script src="/static/assets/js/jquery.jigowatt.js"></script>
 
   </body>
 </html>

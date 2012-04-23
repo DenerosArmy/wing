@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
@@ -16,14 +16,15 @@ from dbox.dbox_wrapper import DropboxService
 sessions=[]
 
 def home(request):
-    return render_to_response('home.html')
+    return render_to_response('home.html',RequestContext(request, {"CS61A":genSession,"EE40":genSession}))
+
 
 def genSession(request,subject='CS61A'):
     sessionID, token = generateSessions.genSession();
     randomValue = str(int(random.random() *10000000)) 
     mySession = Session.objects.create(name=randomValue, subject=subject,count=1,countCap=6,fileName="/dropbox",sessionId=sessionID,textEditor=randomValue) 
     mySession.save() 
-    return app(request, randomValue)
+    return redirect('/app/' + randomValue); 
 
 def app(request,randomValue):   
     MySession = Session.objects.filter(name=randomValue)[0]

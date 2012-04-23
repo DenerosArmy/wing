@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
 
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Project Wing</title>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="Sumukh Sridhara">
 
@@ -28,18 +22,10 @@
 		  <script src="http://code.jquery.com/jquery-latest.js"></script>
 
   <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
-<<<<<<< HEAD
-
-  <script type="text/javascript">
-
-    var apiKey = '14487352';
-    var sessionId = '{{sessionId}}' 
-=======
   <script type="text/javascript">
 
     var apiKey = '14255491';
     var sessionId = "{{ sessionId }}"; 
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
     var token = 'devtoken';           
      
     TB.setLogLevel(TB.DEBUG);     
@@ -84,11 +70,7 @@ function publisherResizeHandler(event) {
         div.setAttribute('id', 'stream' + streams[i].streamId);
 		console.log( document.getElementById('test2') );
 	//	document.getElementById("test2")[0].appendChild('div'); //append new div to another 
-<<<<<<< HEAD
-	//	$('/home/test2').append('div');
-=======
 	//	$('#test2').append('div');
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 		var pele = document.getElementById("test2");
 		pele.appendChild(div);
 
@@ -149,23 +131,6 @@ function changeText(txt){
 						<div class="nav-collapse">
 					<ul class="nav" id="findme">
 						<li><a href="home.php">Home</a></li>
-<<<<<<< HEAD
-						<li><a href="/home/">Classes</a></li>
-						<li><a href="/home/">About</a></li>
-
-						<li><a href="/home/">Blog</a></li>
-					</ul>
-		<ul class="nav  pull-right">
-			<li><a href="/home/" class="signup-link"><strong>You are studying! </strong> &raquo; </a></li> <li><a data-toggle="modal" class="signup-link" href="#myModal" ><strong> Invite</strong> your friends</a>
-</li>
-
-		</ul>
-				</div>
-				</div>
-			</div><!-- /navbar-inner -->
-		</div><!-- /navbar -->
-	</div><!-- /navbar-wrapper -->
-=======
 						<li><a href="#">Classes</a></li>
 						<li><a href="#">About</a></li>
 
@@ -181,30 +146,11 @@ function changeText(txt){
                         </div><!-- /navbar-inner -->
                 </div><!-- /navbar -->
         </div><!-- /navbar-wrapper -->
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 
 <!-- Main content================================================== -->
           <div id="myModal" class="modal hide fade">
             <div class="modal-header">
               <a class="close" data-dismiss="modal" >&times;</a>
-<<<<<<< HEAD
-              <h3>Modal Heading</h3>
-            </div>
-            <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>http://169.229.99.129/{{name}}</p>
-
-            </div>
-            <div class="modal-footer">
-              <a href="/home/" class="btn" data-dismiss="modal" >Close</a>
-                        <a href="/home/" class="btn btn-primary" data-dismiss="modal" >Share</a>
-
-            </div>
-          </div>
-
-
-<div class="container-fluid">
-=======
               <h3>Share url</h3>
             </div>
             <div class="modal-body">
@@ -218,7 +164,6 @@ function changeText(txt){
 
             </div>
           </div><div class="container-fluid">
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
       <div class="row-fluid">
         <div class="span3">
 
@@ -226,20 +171,7 @@ function changeText(txt){
 
             <ul class="nav nav-list">
               <li class="nav-header">People here</li>
-<<<<<<< HEAD
-              <li class="active"><a target="freeform" onclick='changeText("Your Space")' href="http://willyou.typewith.me/p/{{myText}}">Class Name</a></li>
-              <li><a target="freeform" onclick='changeText("Richie")' href="http://willyou.typewith.me/p/richielusdalasda">Richie</a></li>
-              <li><a target="freeform" onclick='changeText("Sumukh")' href="http://willyou.typewith.me/p/sumukhlusdalasda">Sumukh</a></li>
-              <li><a target="freeform" onclick='changeText("Whiteboard")' href="http://api.dabbleboard.com/api/iframe?dev_id=sumukh1&user_id=cs61&user_key=cs61&drawing_user_id=cs61&drawing_id=0&drawing_key=cs61&width=640&height=480
-">Whiteboard</a></li>
-<li class="nav-header">Files</li>
-              <li><a target="freeform" onclick='changeText("CS61A P/S 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/hw/hw1.html">Problem Set 1</a></li>
-              <li><a target="freeform" onclick='changeText("SICP Ch. 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/functions.html
-">Textbook</a></li>
-
-
-=======
-              <li class="active"><a target="freeform" onclick='changeText("Your Space")' href="http://willyou.typewith.me/p/lusdalasda">Class Name</a></li>
+              <li class="active"><a target="freeform" onclick='changeText("Your Space")' href="http://willyou.typewith.me/p/{{ myText }}">Class Name</a></li>
               <li><a target="freeform" onclick='changeText("Richie")' href="http://willyou.typewith.me/p/richielusdalasda">Richie</a></li>
               <li><a target="freeform" onclick='changeText("Sumukh")' href="http://willyou.typewith.me/p/sumukhlusdalasda">Sumukh</li>
               
@@ -247,7 +179,6 @@ function changeText(txt){
  Please choose a file: <input name="uploaded" type="file" /><br />
  <input type="submit" value="Upload" />
  </form> 
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 
                 <div id="myPublisherDiv"></div>
     <div id="test2"></div>
@@ -264,19 +195,11 @@ function changeText(txt){
             <div class="span6">
 
               <h2><div id="freetitle">Your Space</div></h2>
-<<<<<<< HEAD
-              <iframe name="freeform" src="http://willyou.typewith.me/p/{{myText}}"  width="100%" height="600px" frameborder="0"></iframe>
-            </div><!--/span-->
-                        <div class="span6">
-              <h2>The Classes Space</h2>
-              <iframe src="http://willyou.typewith.me/p/{{groupText}}"  width="100%" height="600px" frameborder="0"></iframe>
-=======
               <iframe name="freeform" src="http://willyou.typewith.me/p/{{ myText }}"  width="100%" height="600px" frameborder="0"></iframe>
             </div><!--/span-->
                         <div class="span6">
               <h2>The Classes Space</h2>
               <iframe src="http://willyou.typewith.me/p/{{ groupText }}"  width="100%" height="600px" frameborder="0"></iframe>
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
             </div><!--/span-->
 
             </div><!--/span-->
@@ -299,15 +222,9 @@ function changeText(txt){
 			<hr class="soften">
 
 			<div id="logo"> 
-<<<<<<< HEAD
-		<a href="/home/">&copy; <logo>Project Wing</logo> - The Big Hack - Cal</a>  
-		</div> 
-				<div id="Group2"><br> <a href="/home/privacy">Privacy </a>  |  <a href="#">Blog</a> 	</div>
-=======
 		<a href="#">&copy; <logo>Project Wing</logo> - The Big Hack - Cal</a>  
 		</div> 
 				<div id="Group2"><br> <a href="#privacy">Privacy </a>  |  <a href="#">Blog</a> 	</div>
->>>>>>> 19b4d34b22c8a2935e1d3554449ff0c21c102aa9
 </div>
 	</footer>
 

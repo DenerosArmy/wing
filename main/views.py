@@ -12,8 +12,9 @@ import random
 from math import log10
 from main.models import *
 from dbox.dbox_wrapper import DropboxService
+import appkeys
+from dropbox import client, rest, session
 
-sessions=[]
 
 def home(request):
     return render_to_response('home.html',RequestContext(request, {"CS61A":genSession,"EE40":genSession}))
@@ -26,11 +27,22 @@ def genSession(request,subject='CS61A'):
     mySession.save() 
     return redirect('/app/' + randomValue); 
 
-def app(request,randomValue):   
+def genDropbox(request, code):
+    dbox = DropboxService()
+    sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
+    oauth_token = sess.obtain_request_token()
+    url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F169.229.99.129:1338/app/'+ code)
+    return redirect(url)
+
+def app(request, randomValue):
+    requestId = request.POST['oauth_token']
+    print(requestId)
+    sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
+    #sess.set_token('wjxql0pdnuu9yqn','t2gmb966i7l5wpd')
     MySession = Session.objects.filter(name=randomValue)[0]
     sessionId = MySession.sessionId
     changedString = str(int(randomValue) + MySession.count) 
-    myText = changedString 
+    myText = changedString
     User.objects.create(session=MySession,personalFile="",textEditor=myText) 
     MySession.changeCount(1)
     return render_to_response('app.html',RequestContext(request,{"name":randomValue,"sessionId":sessionId,"myText":changedString,"groupText":MySession.textEditor})) 

@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from main.views import home,app,genSession,authenticate,genList
+from main.views import home,app,genSession,authenticate,genList,genDropbox
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     ('^gen/([A-Za-z]{0,20})',genSession),
     ('^auth/$',authenticate),
     ('^list/$',genList),
-    ('^app/(\d{1,30})' , app),  
+    ('^app/(\d{1,30})' , genDropbox),
+    ('^dbox/$', genDropbox),
 
 
     

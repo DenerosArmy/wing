@@ -9,19 +9,27 @@ class DropboxService(object):
     lastIndexMetadata = {'modified':''}
     cursor = None
 
-    def __init__(self):
-        self.client = None
+    def __init__(self, oauth_token=False):
         self.sess = session.DropboxSession(appkeys.DROPBOX['key'], \
                 appkeys.DROPBOX['secret'], 'app_folder')
-        self.request_token = self.sess.obtain_request_token()
-        self.url = self.sess.build_authorize_url(self.request_token)
-        #print "url:", url
-        #print "Please visit this website and press the 'Allow' button, then hit 'Enter' here."
-        #os.system("xdg-open {0}".format(url))
-        #print("Press enter when authentication has completed")
+        if not oauth_token:
+            self.client = None
+            self.sess = session.DropboxSession(appkeys.DROPBOX['key'], \
+                    appkeys.DROPBOX['secret'], 'app_folder')
+            self.request_token = self.sess.obtain_request_token()
+            self.url = self.sess.build_authorize_url(self.request_token)
+            print "Url:", self.url
+            print "Please visit this website and press the 'Allow' button"
+            #os.system("xdg-open {0}".format(url))
+            #print("Press enter when authentication has completed")
+        else:
+            self.oauth = oauth_token
+            token = self.parseToken(oauth_token)
+            self.sess.set_token(token[0], token[1])
+            self.client = client.DropboxClient(self.sess)
     
-    def getToken(self):
-        access_token = self.sess.obtain_access_token(self.request_token)
+    def genToken(self):
+        self.oauth = self.sess.obtain_access_token(self.request_token)
         self.client = client.DropboxClient(self.sess)
         print("Linked account")
 
@@ -70,9 +78,16 @@ class DropboxService(object):
             self.getToken()
         metaList = self.client.metadata(path)['contents']
         for data in metaList:
-            pair = [None,None]
-            pair[0]=data['path'][1:]
-            pair[1]=self.getURL(path)
+            pair = {}
+            pair[data['path'][1:]] = self.getURL(path)
             lst.append(pair)
         return lst
 
+    def parseToken(self, access_token):
+        print("Parsing {0}".format(access_token))
+        access_token = access_token.__str__()
+        access_token = access_token.split('&')
+        token = [access_token[1].split('=')[1]]
+        token += [access_token[0].split('=')[1]]
+        print("Parsed {0}".format(token))
+        return token

@@ -37,5 +37,5 @@ class User(models.Model):
     session = models.ForeignKey(Session)
     personalFile = models.CharField(max_length = 30) 
     textEditor = models.CharField(max_length = 300) 
-    #accessToken = models.CharField(max_length = 50)
-    #accessSecret = models.CharField(max_length = 50)
+    accessToken = models.CharField(max_length = 50)
+    accessSecret = models.CharField(max_length = 50)

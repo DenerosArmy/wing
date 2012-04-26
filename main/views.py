@@ -13,9 +13,10 @@ from math import log10
 from main.models import *
 from dbox.dbox_wrapper import DropboxService
 import appkeys
+from tokenPair import * 
 from dropbox import client, rest, session
-
-
+import oauth.oauth
+mySession = 0
 def home(request):
     return render_to_response('home.html',RequestContext(request, {"CS61A":genSession,"EE40":genSession}))
 
@@ -31,20 +32,29 @@ def genDropbox(request, code):
     dbox = DropboxService()
     sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
     oauth_token = sess.obtain_request_token()
-    url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F169.229.99.129:1338/app/'+ code)
+    url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F169.229.99.129:1338/auth/'+ code + '/' + oauth_token.secret)
     return redirect(url)
 
-def app(request, randomValue):
-    requestId = request.POST['oauth_token']
-    print(requestId)
-    sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
+def auth(request, randomValue, secret):
+    requestId = request.GET[u'oauth_token']
+    print(request.GET)
     #sess.set_token('wjxql0pdnuu9yqn','t2gmb966i7l5wpd')
-    MySession = Session.objects.filter(name=randomValue)[0]
+    sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
+    tokens = oauth.oauth.OAuthToken(requestId,secret)  
+    access_token = sess.obtain_access_token(tokens)
+    MySession = Session.objects.filter(name=randomValue)[0] 
     sessionId = MySession.sessionId
     changedString = str(int(randomValue) + MySession.count) 
     myText = changedString
-    User.objects.create(session=MySession,personalFile="",textEditor=myText) 
-    MySession.changeCount(1)
+    User.objects.create(session=MySession,personalFile="",textEditor=myText,accessToken = access_token.key,accessSecret = access_token.secret) 
+    print("ACCESS TOKEN IS" + access_token.key)
+    return redirect('/study/' + randomValue + '/' + requestId) 
+
+def study(request, randomValue, identifier): 
+    MySession = Session.objects.filter(name=randomValue)[0] 
+    sessionId = MySession.sessionId
+    changedString = str(int(randomValue) + MySession.count) 
+    myText = changedString
     return render_to_response('app.html',RequestContext(request,{"name":randomValue,"sessionId":sessionId,"myText":changedString,"groupText":MySession.textEditor})) 
 
 def authenticate(request):

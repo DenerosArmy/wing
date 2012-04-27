@@ -18,7 +18,9 @@ urlpatterns = patterns('',
     ('^auth/(\d{1,30})/([-\w]+)/$' , auth),
     ('^study/(\d{1,30})/([-\w]+)/$' , study),
     ('^dbox/$', genDropbox),
-
+    ('^rest/', include('wing.rest.urls')),
+	
+   
 
     
 

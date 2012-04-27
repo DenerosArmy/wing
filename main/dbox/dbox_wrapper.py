@@ -9,7 +9,7 @@ class DropboxService(object):
     lastIndexMetadata = {'modified':''}
     cursor = None
 
-    def __init__(self, oauth_token=False):
+    def __init__(self, oauth_token=False, oauth_secret=False):
         self.sess = session.DropboxSession(appkeys.DROPBOX['key'], \
                 appkeys.DROPBOX['secret'], 'app_folder')
         if not oauth_token:
@@ -23,9 +23,9 @@ class DropboxService(object):
             #os.system("xdg-open {0}".format(url))
             #print("Press enter when authentication has completed")
         else:
-            self.oauth = oauth_token
-            token = self.parseToken(oauth_token)
-            self.sess.set_token(token[0], token[1])
+            self.token = oauth_token
+            self.secret = oauth_secret
+            self.sess.set_token(self.token, self.secret)
             self.client = client.DropboxClient(self.sess)
     
     def genToken(self):
@@ -62,7 +62,10 @@ class DropboxService(object):
         return paths
 
     def getURL(self, path): 
-        url = self.client.share(path)['url']
+        #print(path)
+        #url = self.client.media(path)['url']
+        #url = "https://www.dropbox.com/s"+url[29:46]+url[56:]
+        url = '../../../Dropbox/Apps/Wing'+path
         return url
 
     def shareRef(self, path):
@@ -73,21 +76,20 @@ class DropboxService(object):
         ref = self.client.add_copy_ref(ref, path)
 
     def listFiles(self, path):
-        lst=[]
+        dic = {}
         if self.client==None:
             self.getToken()
+        #print(self.client.metadata(path))
         metaList = self.client.metadata(path)['contents']
         for data in metaList:
-            pair = {}
-            pair[data['path'][1:]] = self.getURL(path)
-            lst.append(pair)
-        return lst
+            dic[data['path'][1:]] = self.getURL(data['path'])
+        return dic
 
     def parseToken(self, access_token):
-        print("Parsing {0}".format(access_token))
+        #print("Parsing {0}".format(access_token))
         access_token = access_token.__str__()
         access_token = access_token.split('&')
         token = [access_token[1].split('=')[1]]
         token += [access_token[0].split('=')[1]]
-        print("Parsed {0}".format(token))
+        #print("Parsed {0}".format(token))
         return token

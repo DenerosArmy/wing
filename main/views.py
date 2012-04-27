@@ -16,7 +16,11 @@ import appkeys
 from tokenPair import * 
 from dropbox import client, rest, session
 import oauth.oauth
+
 mySession = 0
+serverToken = '1c69a9p4n1lli6z'
+serverSecret = 'l0p08hfa4kgn7n7'
+
 def home(request):
     return render_to_response('home.html',RequestContext(request, {"CS61A":genSession,"EE40":genSession}))
 
@@ -32,7 +36,8 @@ def genDropbox(request, code):
     dbox = DropboxService()
     sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
     oauth_token = sess.obtain_request_token()
-    url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F169.229.99.129:1338/auth/'+ code + '/' + oauth_token.secret)
+    #url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F169.229.99.129:1338/auth/'+ code + '/' + oauth_token.secret)
+    url = 'https://www.dropbox.com/1/oauth/authorize?oauth_token={0}&oauth_callback={1}'.format(dbox.parseToken(oauth_token)[0],'http%3A%2F%2F127.0.0.1:8000/auth/'+ code + '/' + oauth_token.secret)
     return redirect(url)
 
 def auth(request, randomValue, secret):
@@ -51,11 +56,18 @@ def auth(request, randomValue, secret):
     return redirect('/study/' + randomValue + '/' + requestId) 
 
 def study(request, randomValue, identifier): 
-    MySession = Session.objects.filter(name=randomValue)[0] 
+    server = serverSession()
+    fileList = {}
+    try:
+        server.newFolder('/{0}'.format(randomValue))
+    except:
+        pass
+    fileList = server.listFiles('/{0}'.format(randomValue))
+    MySession = Session.objects.filter(name=randomValue)[0]
     sessionId = MySession.sessionId
     changedString = str(int(randomValue) + MySession.count) 
     myText = changedString
-    return render_to_response('app.html',RequestContext(request,{"name":randomValue,"sessionId":sessionId,"myText":changedString,"groupText":MySession.textEditor})) 
+    return render_to_response('app.html',RequestContext(request,{"name":randomValue,"sessionId":sessionId,"myText":changedString,"groupText":MySession.textEditor,"files":fileList})) 
 
 def authenticate(request):
     global session
@@ -73,3 +85,6 @@ def genList(request):
     f.close()
     return render_to_response('files.html')
 
+def serverSession():
+    dbox = DropboxService(serverToken, serverSecret)
+    return dbox

@@ -2,7 +2,8 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+SESSION_SAVE_EVERY_REQUEST = True;
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False;
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -73,7 +74,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    
+   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'wing.urls'
@@ -96,7 +98,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-	'main',
-	'gunicorn'
-
+    'main',
+    'gunicorn',
+    'rest',
 )

@@ -2,3 +2,4 @@
 *.swp
 venv
 main/.DS_Store
+Dropbox/*

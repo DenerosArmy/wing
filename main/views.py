@@ -33,6 +33,7 @@ def genSession(request,subject='CS61A'):
     return redirect('/app/' + randomValue); 
 
 def genDropbox(request, code):
+    print(request.session.get('session'))  
     dbox = DropboxService()
     sess = session.DropboxSession(appkeys.DROPBOX['key'], appkeys.DROPBOX['secret'], 'app_folder')
     oauth_token = sess.obtain_request_token()
@@ -51,7 +52,8 @@ def auth(request, randomValue, secret):
     sessionId = MySession.sessionId
     changedString = str(int(randomValue) + MySession.count) 
     myText = changedString
-    User.objects.create(session=MySession,personalFile="",textEditor=myText,accessToken = access_token.key,accessSecret = access_token.secret) 
+    request.session['user'] = User.objects.create(session=MySession,personalFile="",textEditor=myText,accessToken = access_token.key,accessSecret = access_token.secret) 
+    
     print("ACCESS TOKEN IS" + access_token.key)
     return redirect('/study/' + randomValue + '/' + requestId) 
 

@@ -124,7 +124,7 @@ function changeText(txt){
 				</a>
 
 				<a class="brand" href="home.php">
-			<logo >Project Wing</logo>	<!-- <img src="/static/assets/i/ghlogo.png" width="90"> --> 				
+			<logo>Project Wing</logo>	<!-- <img src="/static/assets/i/ghlogo.png" width="90"> --> 				
 				</a>
 				
 						<div class="nav-collapse">
@@ -150,11 +150,13 @@ function changeText(txt){
           <div id="myModal" class="modal hide fade">
             <div class="modal-header">
               <a class="close" data-dismiss="modal" >&times;</a>
-              <h3>Modal Heading</h3>
+              <h3>Share this link</h3>
             </div>
             <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>http://169.229.99.129/{{name}}</p>
+              <h4>Paste this link to a friend so they can join you!</h4>
+              </br>
+              <p>http://169.229.99.129:1338/app/{{name}}</p>
+              </br>
 
             </div>
             <div class="modal-footer">
@@ -174,16 +176,15 @@ function changeText(txt){
             <ul class="nav nav-list">
               <li class="nav-header">Tools</li>
               <li class="active"><a target="freeform" onclick='changeText("Your Notes")' href="http://willyou.typewith.me/p/{{myText}}">Your Notes</a></li>
-							<!--<li><a target="freeform" onclick='changeText("Richie")' href="http://willyou.typewith.me/p/richielusdalasda">Richie</a></li>-->
-							<!--<li><a target="freeform" onclick='changeText("Vaishaal")' href="http://willyou.typewith.me/p/sumukhlusdalasda">Sumukh</a></li>-->
-							<li><a target="freeform" onclick='changeText("Whiteboard")' href="http://api.dabbleboard.com/api/iframe?dev_id=sumukh1&user_id=cs61&user_key=cs61&drawing_user_id=cs61&drawing_id=0&drawing_key=cs61&width=640&height=480">Whiteboard</a></li>
-							<li class="nav-header">Files</li>
-							<!--<li><a target="freeform" onclick='changeText("CS61A P/S 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/hw/hw1.html">Problem Set 1</a></li>-->
-							<!--<li><a target="freeform" onclick='changeText("SICP Ch. 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/functions.html">Textbook</a></li>-->
-							{% for key,value in files.items %}
-							<li><a target="freeform" onclick='changeText({{ key }})' href={{value}}>{{ key }}</a></li>
-							{% endfor %}
-
+		<!--<li><a target="freeform" onclick='changeText("Richie")' href="http://willyou.typewith.me/p/richielusdalasda">Richie</a></li>-->
+		<!--<li><a target="freeform" onclick='changeText("Vaishaal")' href="http://willyou.typewith.me/p/sumukhlusdalasda">Sumukh</a></li>-->
+		<li><a target="freeform" onclick='changeText("Whiteboard")' href="http://api.dabbleboard.com/api/iframe?dev_id=sumukh1&user_id=cs61&user_key=cs61&drawing_user_id=cs61&drawing_id=0&drawing_key=cs61&width=640&height=480">Whiteboard</a></li>
+	    <li class="nav-header">Files</li>
+		<!--<li><a target="freeform" onclick='changeText("CS61A P/S 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/hw/hw1.html">Problem Set 1</a></li>-->
+		<!--<li><a target="freeform" onclick='changeText("SICP Ch. 1")' href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/functions.html">Textbook</a></li>-->
+		{% for key,value in files.items %}
+			<li><a target="freeform" onclick='changeText({{ key }})' href="{{ STATIC_URL }}Dropbox/Apps/Wing/{{ name }}/{{ key }}">{{ key }}</a></li>
+		{% endfor %}
 
 
                 <div id="myPublisherDiv"></div>
@@ -200,11 +201,11 @@ function changeText(txt){
           <div class="row-fluid">
             <div class="span6">
 
-              <h2><div id="freetitle">Your Space</div></h2>
+              <h2><div id="freetitle">Your Workspace</div></h2>
               <iframe name="freeform" src="http://willyou.typewith.me/p/{{myText}}"  width="100%" height="600px" frameborder="0"></iframe>
             </div><!--/span-->
                         <div class="span6">
-              <h2>The Classes Space</h2>
+              <h2>The Group's Space</h2>
               <iframe src="http://willyou.typewith.me/p/{{groupText}}"  width="100%" height="600px" frameborder="0"></iframe>
             </div><!--/span-->
 

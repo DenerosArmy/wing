@@ -8,4 +8,5 @@ class SessionHandler(BaseHandler):
 	def read(self, request, session_id):
 		base = Session.objects
 		session =  base.filter(name = session_id)[0] 
-		return session 
+		return session
+

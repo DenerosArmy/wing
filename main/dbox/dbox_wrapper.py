@@ -65,7 +65,7 @@ class DropboxService(object):
         #print(path)
         #url = self.client.media(path)['url']
         #url = "https://www.dropbox.com/s"+url[29:46]+url[56:]
-        url = '../../../Dropbox/Apps/Wing'+path
+        url = '../../../media'+path
         return url
 
     def shareRef(self, path):
@@ -82,7 +82,7 @@ class DropboxService(object):
         #print(self.client.metadata(path))
         metaList = self.client.metadata(path)['contents']
         for data in metaList:
-            dic[data['path'][1:]] = self.getURL(data['path'])
+            dic[data['path'][1:].split('/')[1]] = self.getURL(data['path'])
         return dic
 
     def parseToken(self, access_token):

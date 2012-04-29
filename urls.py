@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
 from main.views import *
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # Uncomment the next two lines to enable the admin:
@@ -19,9 +20,7 @@ urlpatterns = patterns('',
     ('^study/(\d{1,30})/([-\w]+)/$' , study),
     ('^dbox/$', genDropbox),
     ('^rest/', include('wing.rest.urls')),
-	
-   
-
+    ('^sync/(\d{1,30})', syncFromServer),
     
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -30,5 +29,12 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^%s/Dropbox/Apps/(\d{1,30})/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    )
 
 urlpatterns += staticfiles_urlpatterns()

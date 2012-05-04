@@ -5,5 +5,5 @@ from wing.rest.handlers import SessionHandler
 sessionHandler = Resource(SessionHandler)
 
 urlpatterns = patterns('',
-   url('^(\d{1,30})' ,sessionHandler , {'emitter_format': 'json'}) 
+    url('^(\d{1,30})' ,sessionHandler , {'emitter_format': 'json'}),
 )

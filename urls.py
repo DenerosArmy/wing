@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     ('^dbox/$', genDropbox),
     ('^rest/', include('wing.rest.urls')),
     ('^sync/(\d{1,30})', syncFromServer),
-    
+
 
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

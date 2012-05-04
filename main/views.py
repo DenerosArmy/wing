@@ -19,8 +19,8 @@ import oauth.oauth
 import datetime
 
 mySession = 0
-serverToken = '1c69a9p4n1lli6z'
-serverSecret = 'l0p08hfa4kgn7n7'
+serverToken = 'domzwyid66pmkmt'
+serverSecret = 'k1mggww3xic9njz'
 
 def home(request):
     return render_to_response('home.html',RequestContext(request, {"CS61A":genSession,"EE40":genSession}))

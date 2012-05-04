@@ -79,10 +79,10 @@ class DropboxService(object):
         dic = {}
         if self.client==None:
             self.getToken()
-        #print(self.client.metadata(path))
+        print(self.client.metadata(path))
         metaList = self.client.metadata(path)['contents']
         for data in metaList:
-            dic[data['path'][1:].split('/')[1]] = self.getURL(data['path'])
+            dic[data['path'][1:].split('/')[-1]] = self.getURL(data['path'])
         return dic
 
     def parseToken(self, access_token):
